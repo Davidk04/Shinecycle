@@ -1,9 +1,11 @@
-package com.example.shinesensor;
+package com.example.shinesensor.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.shinesensor.R;
 
 public class MainActivity extends AppCompatActivity {
 

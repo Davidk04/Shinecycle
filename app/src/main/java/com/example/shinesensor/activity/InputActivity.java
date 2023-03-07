@@ -1,4 +1,4 @@
-package com.example.shinesensor;
+package com.example.shinesensor.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TimePicker;
+
+import com.example.shinesensor.R;
 
 import java.util.Locale;
 

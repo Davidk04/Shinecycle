@@ -1,4 +1,4 @@
-package com.example.shinesensor;
+package com.example.shinesensor.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+
+import com.example.shinesensor.R;
 
 public class StartActivity extends AppCompatActivity {
     private Handler mHandler = new Handler();
