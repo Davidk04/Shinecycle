@@ -17,6 +17,7 @@ import java.util.Locale;
 public class InputActivity extends AppCompatActivity {
     Button morningButton;
     int hour, minute;
+    Button nightButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class InputActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         morningButton = findViewById(R.id.morningButton);
+        nightButton = findViewById(R.id.nightButton);
     }
 
     public void onBackPressed() {
@@ -40,6 +42,19 @@ public class InputActivity extends AppCompatActivity {
                 hour = selectHour;
                 minute = selectMinute;
                 morningButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
+            }
+        };
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
+        timePickerDialog.show();
+    }
+
+    public void onClickNightButton(View view) {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectHour, int selectMinute) {
+                hour = selectHour;
+                minute = selectMinute;
+                nightButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
             }
         };
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
