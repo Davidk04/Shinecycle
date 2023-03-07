@@ -18,6 +18,7 @@ public class InputActivity extends AppCompatActivity {
     Button morningButton;
     int hour, minute;
     Button nightButton;
+    Button enterButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,13 @@ public class InputActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         morningButton = findViewById(R.id.morningButton);
         nightButton = findViewById(R.id.nightButton);
+        enterButton = findViewById(R.id.enterButton);
+        enterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivity();
+            }
+        });
     }
 
     public void onBackPressed() {
@@ -59,5 +67,9 @@ public class InputActivity extends AppCompatActivity {
         };
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
         timePickerDialog.show();
+    }
+    public void openActivity(){
+        Intent intent = new Intent(this, ResultActivity.class);
+        startActivity(intent);
     }
 }

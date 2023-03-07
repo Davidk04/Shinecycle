@@ -58,6 +58,14 @@
                 android:onClick="onClickNightButton"
                 android:text="pick a time" />
 
+            <Button
+                android:id="@+id/enterButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/design_default_color_primary"
+                android:text="enter" />
+
         </LinearLayout>
 
     </LinearLayout>
