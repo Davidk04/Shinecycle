@@ -16,7 +16,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="133dp"
-            android:text="What ist your sleep schedule?"
+            android:text="what ist your sleep schedule?"
             android:textColor="@android:color/black"
             android:textSize="36dp" />
 
@@ -36,8 +36,9 @@
                 android:id="@+id/morningButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#f8a055"
                 android:onClick="onClickTimeButton"
-                android:text="Your morning" />
+                android:text="pick a time" />
 
         </LinearLayout>
 
