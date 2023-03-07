@@ -33,7 +33,7 @@ public class InputActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onClickTimeButton(View view) {
+    public void onClickMorningButton(View view) {
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectHour, int selectMinute) {

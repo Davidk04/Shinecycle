@@ -30,14 +30,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="morning:"
+                android:textSize="20dp"
                 android:textColor="@android:color/black"/>
 
             <Button
                 android:id="@+id/morningButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#f8a055"
-                android:onClick="onClickTimeButton"
+                android:backgroundTint="#d9d9d9"
+                android:onClick="onClickMorningButton"
+                android:text="pick a time" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="night:"
+                android:textSize="20dp"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/nightButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#d9d9d9"
+                android:onClick="onClickNightButton"
                 android:text="pick a time" />
 
         </LinearLayout>
