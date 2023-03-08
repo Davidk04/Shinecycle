@@ -27,6 +27,9 @@ public class ResultActivity extends AppCompatActivity {
     int minuteMorning;
     int minuteNight;
 
+    int hour, minute;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +42,19 @@ public class ResultActivity extends AppCompatActivity {
         setTitles();
         lightSensorService();
         getSchedule();
+        getTime();
         currentLux.setText(String.valueOf(receivedLux) + " lux");
-            if(!isNight && receivedLux < 400) {
+            if(!isNight && receivedLux < 400 && hourMorning == hour && minuteMorning == minute){
                 Intent intent = new Intent(this, AlertService.class);
                 intent.putExtra("title", "Turn the light up");
                 startService(intent);
             }
-    }
+        if(isNight && receivedLux > 200){
+            Intent intent = new Intent(this, AlertService.class);
+            intent.putExtra("title", "Turn the light down");
+            startService(intent);
+        }
+        }
 
     public void onBackPressed() {
         Intent intent = new Intent(this, InputActivity.class);
@@ -57,7 +66,10 @@ public class ResultActivity extends AppCompatActivity {
     public void getTime() {
         //Code from StackOverflow: https://stackoverflow.com/questions/8250367/android-detect-if-night
         Calendar cal = Calendar.getInstance();
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        hour = cal.get(Calendar.HOUR_OF_DAY);
+        minute = cal.get(Calendar.MINUTE);
+        System.out.println(minute);
+        cal = null;
         if (hour < 6 || hour > 18) {
             isNight = true;
         } else {
@@ -91,5 +103,9 @@ public class ResultActivity extends AppCompatActivity {
         scheduleTime = schedule.getExtras();
         System.out.println(scheduleTime);
 
+        hourMorning = scheduleTime.getInt("hourMorning");
+        hourNight = scheduleTime.getInt("hourNight");
+        minuteMorning = scheduleTime.getInt("minuteMorning");
+        minuteNight = scheduleTime.getInt("minuteNight");
     }
 }
