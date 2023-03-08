@@ -44,12 +44,12 @@ public class ResultActivity extends AppCompatActivity {
         getSchedule();
         getTime();
         currentLux.setText(String.valueOf(receivedLux) + " lux");
-            if(!isNight && receivedLux < 400 && hourMorning == hour && minuteMorning == minute){
+            if(!isNight && receivedLux < 400){
                 Intent intent = new Intent(this, AlertService.class);
                 intent.putExtra("title", "Turn the light up");
                 startService(intent);
             }
-        if(isNight && receivedLux > 200){
+        if(isNight && receivedLux > 200 && hourNight == hour && minuteNight == minute){
             Intent intent = new Intent(this, AlertService.class);
             intent.putExtra("title", "Turn the light down");
             startService(intent);
@@ -68,8 +68,6 @@ public class ResultActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         hour = cal.get(Calendar.HOUR_OF_DAY);
         minute = cal.get(Calendar.MINUTE);
-        System.out.println(minute);
-        cal = null;
         if (hour < 6 || hour > 18) {
             isNight = true;
         } else {
