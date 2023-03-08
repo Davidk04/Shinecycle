@@ -45,7 +45,6 @@ public class LightSensorService extends Service implements SensorEventListener {
 
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra("lux", lux);
-            System.out.println(lux);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }

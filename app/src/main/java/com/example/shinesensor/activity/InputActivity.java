@@ -11,13 +11,15 @@ import android.widget.Button;
 import android.widget.TimePicker;
 
 import com.example.shinesensor.R;
+import com.example.shinesensor.service.AlertService;
 import com.example.shinesensor.service.LightSensorService;
 
+import java.util.Calendar;
 import java.util.Locale;
 
 public class InputActivity extends AppCompatActivity {
     Button morningButton;
-    int hour, minute;
+    int hourMorning, minuteMorning, hourNight, minuteNight;
     Button nightButton;
     Button enterButton;
     @Override
@@ -32,6 +34,7 @@ public class InputActivity extends AppCompatActivity {
         enterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 openActivity();
             }
         });
@@ -48,29 +51,34 @@ public class InputActivity extends AppCompatActivity {
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectHour, int selectMinute) {
-                hour = selectHour;
-                minute = selectMinute;
-                morningButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
+                hourMorning = selectHour;
+                minuteMorning = selectMinute;
+                morningButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hourMorning, minuteMorning));
             }
         };
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
-        timePickerDialog.show();
+        TimePickerDialog timePickerDialogMorning = new TimePickerDialog(this, onTimeSetListener, hourMorning, minuteMorning, true);
+        timePickerDialogMorning.show();
+
     }
 
     public void onClickNightButton(View view) {
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectHour, int selectMinute) {
-                hour = selectHour;
-                minute = selectMinute;
-                nightButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
+                hourNight = selectHour;
+                minuteNight = selectMinute;
+                nightButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hourNight, minuteNight));
             }
         };
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
-        timePickerDialog.show();
+        TimePickerDialog timePickerDialogNight = new TimePickerDialog(this, onTimeSetListener, hourNight, minuteNight, true);
+        timePickerDialogNight.show();
     }
     public void openActivity(){
         Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("hourMorning", hourMorning);
+        intent.putExtra("hourNight", hourNight);
+        intent.putExtra("minuteMorning", minuteMorning);
+        intent.putExtra("minuteNight", minuteNight);
         startActivity(intent);
     }
 }
