@@ -19,16 +19,15 @@ public class ResultActivity extends AppCompatActivity {
     TextView title;
     TextView recomendedLux;
     TextView currentLux;
+    TextView wakingTime;
+    TextView sleepingTime;
     float receivedLux;
     Bundle scheduleTime;
-
     int hourMorning;
     int hourNight;
     int minuteMorning;
     int minuteNight;
-
     int hour, minute;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +38,8 @@ public class ResultActivity extends AppCompatActivity {
         title = findViewById(R.id.title);
         recomendedLux = findViewById(R.id.recomendedLux);
         currentLux = findViewById(R.id.currentLux);
+        wakingTime = findViewById(R.id.wakingtime);
+        sleepingTime = findViewById(R.id.sleepingtime);
         setTitles();
         lightSensorService();
         getSchedule();
@@ -105,5 +106,7 @@ public class ResultActivity extends AppCompatActivity {
         hourNight = scheduleTime.getInt("hourNight");
         minuteMorning = scheduleTime.getInt("minuteMorning");
         minuteNight = scheduleTime.getInt("minuteNight");
+        wakingTime.setText("waking time: " + hourMorning +":"+minuteMorning);
+        sleepingTime.setText("sleeping time: "+ hourNight +":"+ minuteNight);
     }
 }
