@@ -59,7 +59,7 @@
                 android:text="current level:" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/currentLux"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"

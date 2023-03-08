@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TimePicker;
 
 import com.example.shinesensor.R;
+import com.example.shinesensor.service.LightSensorService;
 
 import java.util.Locale;
 
